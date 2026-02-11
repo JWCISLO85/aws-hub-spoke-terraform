@@ -1,5 +1,5 @@
 # aws-hub-spoke-terraform
-** Work in Progress- Portfolio Project demonstarting hub-spoke architecture with AWS Transit Gateway
+Work in Progress- Portfolio Project demonstarting hub-spoke architecture with AWS Transit Gateway
 ## Overview
 Hub-and-spoke network topology in AWS using Terraform with VPN gateway,  security groups, and multi-region deployment
 
