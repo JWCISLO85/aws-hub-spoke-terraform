@@ -6,19 +6,19 @@ Hub-and-spoke network topology in AWS using Terraform with VPN gateway,  securit
 **Technologies** Terraform, AWS, VPC Networking
 
 ## Architetcture
--Spoke 1 <-> Transit Gateway <-> Spoke 2
-             -|
-           -Jonny's Hub VPC
-            -|
-            -Internet
+- Spoke 1 <-> Transit Gateway <-> Spoke 2
+             - |
+           - Jonny's Hub VPC
+            -  |
+            - Internet
 
 ## Features
--Hub- Spoke topolgy with Transit Gateway
--Centralized Routing
--Infrastructure as Code (Terraform)
--Firewall (in progress)
--Nat Gateway (in progress)
- Security Groups (in progress)
+- Hub- Spoke topolgy with Transit Gateway
+- Centralized Routing
+- Infrastructure as Code (Terraform)
+- Firewall (in progress)
+- Nat Gateway (in progress)
+ - Security Groups (in progress)
 
  ## Status
  Completion 50%
