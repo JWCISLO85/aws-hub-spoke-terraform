@@ -17,7 +17,7 @@ Hub-and-spoke network topology in AWS using Terraform with VPN gateway,  securit
                Internet
 
 ## Features
-- Hub- Spoke topolgy with Transit Gateway
+- Hub- Spoke topology with Transit Gateway
 - Centralized Routing
 - Infrastructure as Code (Terraform)
 - Firewall (in progress)
