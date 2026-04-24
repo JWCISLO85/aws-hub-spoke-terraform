@@ -258,48 +258,6 @@ resource "aws_default_route_table" "healthcare_route" {
   }
 }
 
-#================================================
-# Security Group For Bastion Host
-#================================================
-resource "aws_security_group" "bastion_sg" {
-  name        = "jonnys-bastion-sg"
-  description = "Security group for bastion host -SSH access only"
-  vpc_id      = aws_vpc.jonnys_hub_vpc.id
-
-  #Inbound rule -SSH fromy my IP only
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = var.allowed_ips
-    description = "SSH from my IP only"
-  }
-
-  #Outbound rule - Allow all outbound traffic
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-    description = "alow all outbound traffic"
-
-  }
-
-  tags = {
-    Name = "Jonnys-Bastion-SG"
-  }
-}
-
-#SSH Key pair- for accessing the bastionresource 
-resource "aws_key_pair" "hub_key" {
-  key_name   = "jonnys-hub-key-new"
-  public_key = file("~/.ssh/jonnys-hub-key-new.pub")
-
-  tags = {
-    Name = "Jonnys-Hub-SSH-Key-New"
-  }
-}
-
 
 
 #Elastic IP -Permanent public IP for bastion
