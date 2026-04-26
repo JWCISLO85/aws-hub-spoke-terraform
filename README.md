@@ -78,12 +78,5 @@ Additional tests performed:
 
 ## Author
 
-**Jonathan Wcislo** — Champlain College, 2026
-
-## References
-
-- AWS Well-Architected Framework, [REL02-BP04: Prefer hub-and-spoke topologies over many-to-many mesh](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel_planning_network_topology_prefer_hub_and_spoke.html)
-- AWS, [Systems Manager Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html)
-- AWS, [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html)
-- NIST SP 800-215, [Guide to a Secure Enterprise Network Landscape](https://doi.org/10.6028/nist.sp.800-215)
-- NCSC, [Preventing Lateral Movement](https://www.ncsc.go
+**Jonathan Wcislo**
+Senior Seminar Project,Champlain College (2026)
