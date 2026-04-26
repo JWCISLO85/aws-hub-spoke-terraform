@@ -52,29 +52,6 @@ Session activity logged to CloudTrail and optionally S3
 - An AWS account with permissions to create VPC, EC2, Transit Gateway, IAM, CloudWatch, and SNS resources
 - A verified email address for SNS alarm notifications
 
-## Deployment
-
-​```bash
-# Clone the repo
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
-
-# Initialize Terraform
-terraform init
-
-# Review the plan
-terraform plan
-
-# Deploy
-terraform apply
-​```
-
-To tear the environment down:
-
-​```bash
-terraform destroy
-​```
-
 ## Testing
 
 Network segmentation is validated with a bash script using `nmap`. Results are interpreted as:
