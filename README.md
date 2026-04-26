@@ -45,3 +45,68 @@ No inbound ports open to the internet
 No SSH keys to manage, rotate, or harden
 Access granted and revoked through IAM
 Session activity logged to CloudTrail and optionally S3
+ Prerequisites
+
+- [Terraform](https://developer.hashicorp.com/terraform/downloads) ≥ 1.5
+- [AWS CLI](https://aws.amazon.com/cli/) configured with credentials (`aws configure`)
+- An AWS account with permissions to create VPC, EC2, Transit Gateway, IAM, CloudWatch, and SNS resources
+- A verified email address for SNS alarm notifications
+
+## Deployment
+
+​```bash
+# Clone the repo
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+
+# Initialize Terraform
+terraform init
+
+# Review the plan
+terraform plan
+
+# Deploy
+terraform apply
+​```
+
+To tear the environment down:
+
+​```bash
+terraform destroy
+​```
+
+## Testing
+
+Network segmentation is validated with a bash script using `nmap`. Results are interpreted as:
+
+- `filtered` → **PASS** (firewall blocking traffic, no response)
+- `closed` → **REVIEW** (host reachable but service not running)
+- `open` → **FAIL** (segmentation gap)
+
+Additional tests performed:
+
+- `curl` against external endpoints to confirm outbound access through the NAT Gateway
+- Linux `stress-ng` to drive CPU utilization above 80% and verify the CloudWatch alarm and SNS email fire correctly
+- VPC Flow Logs reviewed in CloudWatch Logs to confirm accept/reject behavior matches security group rules
+
+> Note: the EC2 status-check alarm enters an `INSUFFICIENT_DATA` state when an instance is stopped (no metrics are emitted). To exercise that alarm in a future iteration, AWS Fault Injection Service is the right tool.
+
+## Future Work
+
+- Deploy a centralized firewall appliance in the hub's reserved private subnet
+- Add a SIEM (e.g., a Wazuh or Security Onion stack) for log aggregation
+- Stand up Active Directory domain controllers in the hub
+- Add applications and additional simulated clients
+- Build the environment out into a full SOC lab
+
+## Author
+
+**Jonathan Wcislo** — Champlain College, 2026
+
+## References
+
+- AWS Well-Architected Framework, [REL02-BP04: Prefer hub-and-spoke topologies over many-to-many mesh](https://docs.aws.amazon.com/wellarchitected/latest/framework/rel_planning_network_topology_prefer_hub_and_spoke.html)
+- AWS, [Systems Manager Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html)
+- AWS, [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html)
+- NIST SP 800-215, [Guide to a Secure Enterprise Network Landscape](https://doi.org/10.6028/nist.sp.800-215)
+- NCSC, [Preventing Lateral Movement](https://www.ncsc.go
