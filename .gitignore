@@ -3,3 +3,46 @@
 *.tfstate.backup
 .terraform.lock.hcl
 *.tfvars
+# Terraform working directory
+.terraform/
+.terraform.lock.hcl
+
+# Variable files - often contain secrets, account IDs, IPs
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Plan output files
+*.tfplan
+*.plan
+
+# CLI configuration
+.terraformrc
+terraform.rc
+
+# Override files (used for local-only changes)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# AWS credentials - never commit these
+.aws/
+credentials
+*.pem
+*.ppk
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
