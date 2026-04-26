@@ -9,3 +9,4 @@ Novastream VPC — simulated client environment (private workloads only, no publ
 Healthcare VPC — second simulated client, isolated at the network layer to support a HIPAA-style compliance posture
 
 Spokes connect to the hub through an AWS Transit Gateway. Route tables permit spoke-to-hub traffic only — there is no spoke-to-spoke path, which limits lateral movement if one client is compromised.
+<img width="1008" height="688" alt="image" src="https://github.com/user-attachments/assets/be20f2f2-2d68-4b10-ab18-933fa352c090" />
